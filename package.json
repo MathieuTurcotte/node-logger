@@ -3,6 +3,10 @@
     "description": "Logging library (duplika.ca).",
     "version": "0.1.0",
     "author": "Mathieu Turcotte <turcotte.mat@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MathieuTurcotte/node-logger.git"
+    },
     "devDependencies": {
         "sinon": ">= 0",
         "nodeunit": ">= 0"
