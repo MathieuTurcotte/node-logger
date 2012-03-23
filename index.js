@@ -13,6 +13,8 @@ var MemoryReporter = require('./lib/reporter/memory'),
 var ConnectFormat = require('./lib/adapter/format'),
     ConnectAdapter = require('./lib/adapter/connect');
 
+var SocketIOAdapter = require('./lib/adapter/socket_io');
+
 var container = module.exports = new Container('default');
 
 process.on("SIGHUP", function() {
@@ -33,3 +35,5 @@ module.exports.ExceptionReporter = ExceptionReporter;
 
 module.exports.ConnectFormat = ConnectFormat;
 module.exports.ConnectAdapter = ConnectAdapter;
+
+module.exports.SocketIOAdapter = SocketIOAdapter;
