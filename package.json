@@ -1,0 +1,13 @@
+{
+    "name": "logger",
+    "description": "Logging library (duplika.ca).",
+    "version": "0.1.0",
+    "author": "Mathieu Turcotte <turcotte.mat@gmail.com>",
+    "devDependencies": {
+        "sinon": ">= 0",
+        "nodeunit": ">= 0"
+    },
+    "engines": {
+        "node": ">= 0.6"
+    }
+}
