@@ -1,5 +1,5 @@
-test/*.log
-example/*.log
+tests/*.log
+examples/*.log
 node_modules/
 node_modules/*
 npm-debug.log
