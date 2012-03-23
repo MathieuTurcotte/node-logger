@@ -62,7 +62,7 @@ exports["FileHandler"] = testCase({
     },
 
     "log record should have been written to disk when logged event is emitted": function(test) {
-        this.handler.on('logged', function() {
+        this.handler.on('published', function() {
             var content = fs.readFileSync(path.join(LOG_FOLDER, 'test.log'));
             test.equal(content, this.record1.message + '\n');
             test.done();
@@ -71,8 +71,8 @@ exports["FileHandler"] = testCase({
     },
 
     "calling reopen should reopen the file (logrotate use case)": function(test) {
-        this.handler.once('logged', function() {
-            this.handler.once('logged', function() {
+        this.handler.once('published', function() {
+            this.handler.once('published', function() {
                 var content1 = fs.readFileSync(path.join(LOG_FOLDER, 'test.log.1'));
                 var content2 = fs.readFileSync(path.join(LOG_FOLDER, 'test.log'));
                 test.equal(content1, this.record1.message + '\n');
