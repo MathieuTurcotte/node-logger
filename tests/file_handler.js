@@ -88,5 +88,15 @@ exports["FileHandler"] = testCase({
         }.bind(this));
 
         this.handler.publish(this.record1);
+    },
+
+    "the handler should emit an error if the file can't be opened/created": function(test) {
+        var handler = new FileHandler(this.formatter, path.join(__dirname, 'foo/test.log'));
+
+        handler.on('error', function() {
+            test.done();
+        });
+
+        handler.open();
     }
 });
