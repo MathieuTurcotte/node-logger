@@ -1,6 +1,6 @@
 {
-    "name": "logger",
-    "description": "Logging library (duplika.ca).",
+    "name": "dlog",
+    "description": "Duplika (duplika.ca) logging library.",
     "version": "0.1.0",
     "author": "Mathieu Turcotte <turcotte.mat@gmail.com>",
     "repository": {
