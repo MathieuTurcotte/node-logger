@@ -3,4 +3,7 @@ all: test
 test:
 	node_modules/nodeunit/bin/nodeunit tests/
 
-.PHONY: test
+publish:
+	@npm publish
+
+.PHONY: test publish
