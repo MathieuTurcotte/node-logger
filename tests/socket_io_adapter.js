@@ -17,7 +17,7 @@ var LEVELS = {
     error: Level.SHOUT,
     warn: Level.WARNING,
     info: Level.INFO,
-    debug: Level.DEBUG
+    debug: Level.FINEST
 };
 
 var MESSAGES = {
@@ -33,6 +33,8 @@ function doTest(test, adapter, expectation, name) {
     var message = expectation.getCall(0).args[1];
     test.equal(message, MESSAGES[name]);
     test.equal(level, LEVELS[name]);
+    test.ok(message);
+    test.ok(level);
     test.done();
 }
 
@@ -59,7 +61,7 @@ exports["SocketIOAdapter"] = testCase({
         doTest(test, this.adapter, this.expectation, 'info');
     },
 
-    "Adapter.debug should log at Level.DEBUG": function(test) {
+    "Adapter.debug should log at Level.FINEST": function(test) {
         doTest(test, this.adapter, this.expectation, 'debug');
     },
 });
