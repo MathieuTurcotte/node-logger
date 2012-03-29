@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
-var logger = require('../index');
+var dlog = require('../index');
 
-var Format = logger.Format,
-    ConsoleHandler = logger.ConsoleHandler,
-    ConnectAdapter = logger.ConnectAdapter;
+var Format = dlog.Format,
+    ConsoleHandler = dlog.ConsoleHandler,
+    ConnectAdapter = dlog.ConnectAdapter;
 
 var formatter = Format.compile(':date :message');
 var handler = new ConsoleHandler(formatter);
+var logger = dlog.getLogger();
 logger.addHandler(handler);
 
 var adapter = new ConnectAdapter(logger);

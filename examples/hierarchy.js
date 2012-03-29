@@ -1,20 +1,22 @@
 #!/usr/bin/env node
 
 var util = require('util'),
-    logger = require('../index');
+    dlog = require('../index');
 
-var Level = logger.Level,
-    Format = logger.Format,
-    FileHandler = logger.ConsoleHandler,
-    ConsoleHandler = logger.ConsoleHandler,
-    ExceptionReporter = logger.ExceptionReporter;
+var Level = dlog.Level,
+    Format = dlog.Format,
+    FileHandler = dlog.ConsoleHandler,
+    ConsoleHandler = dlog.ConsoleHandler,
+    ExceptionReporter = dlog.ExceptionReporter;
 
 var formatter = Format.compile('[:date] [:name] [:level] :message');
 var handler = new ConsoleHandler(formatter);
-logger.addHandler(handler);
 
-var child1 = logger.getLogger('duplika.core.Player');
-var child2 = logger.getLogger('duplika.core.Game');
+var root = dlog.getLogger();
+root.addHandler(handler);
+
+var child1 = dlog.getLogger('duplika.core.Player');
+var child2 = dlog.getLogger('duplika.core.Game');
 child2.setLevel(Level.WARNING);
 
 child1.shout('shout');

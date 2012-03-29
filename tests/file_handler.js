@@ -41,6 +41,9 @@ var LOG_FOLDER = path.join(__dirname, 'log');
 
 exports["FileHandler"] = testCase({
     setUp: function(callback) {
+        rmdirSync(LOG_FOLDER);
+        fs.mkdirSync(LOG_FOLDER);
+
         this.record1 = new Record(Level.INFO, 'message1', undefined, 'logger');
         this.record2 = new Record(Level.INFO, 'message2', undefined, 'logger');
 
@@ -50,9 +53,6 @@ exports["FileHandler"] = testCase({
 
         this.handler = new FileHandler(this.formatter, path.join(LOG_FOLDER, 'test.log'));
 
-        rmdirSync(LOG_FOLDER);
-        fs.mkdirSync(LOG_FOLDER);
-
         callback();
     },
 
@@ -61,18 +61,23 @@ exports["FileHandler"] = testCase({
         callback();
     },
 
-    "log record should have been written to disk when logged event is emitted": function(test) {
-        this.handler.on('published', function() {
+    "log record should have been written to disk when flushed event is emitted": function(test) {
+        test.expect(1);
+
+        this.handler.on('flushed', function() {
             var content = fs.readFileSync(path.join(LOG_FOLDER, 'test.log'));
             test.equal(content, this.record1.message + '\n');
             test.done();
         }.bind(this));
+
         this.handler.publish(this.record1);
     },
 
     "calling reopen should reopen the file (logrotate use case)": function(test) {
-        this.handler.once('published', function() {
-            this.handler.once('published', function() {
+        test.expect(2);
+
+        this.handler.once('flushed', function() {
+            this.handler.once('flushed', function() {
                 var content1 = fs.readFileSync(path.join(LOG_FOLDER, 'test.log.1'));
                 var content2 = fs.readFileSync(path.join(LOG_FOLDER, 'test.log'));
                 test.equal(content1, this.record1.message + '\n');
@@ -91,12 +96,26 @@ exports["FileHandler"] = testCase({
     },
 
     "the handler should emit an error if the file can't be opened/created": function(test) {
+        test.expect(1);
+
         var handler = new FileHandler(this.formatter, path.join(__dirname, 'foo/test.log'));
 
         handler.on('error', function() {
+            test.ok(true);
             test.done();
         });
 
         handler.open();
+    },
+
+    "explicitly calling flush should trigger a flushed event": function(test) {
+        test.expect(1);
+
+        this.handler.on('flushed', function() {
+            test.ok(true);
+            test.done();
+        }.bind(this));
+
+        this.handler.flush();
     }
 });

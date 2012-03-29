@@ -17,6 +17,8 @@ var SocketIOAdapter = require('./lib/adapter/socket_io');
 
 var container = module.exports = new Container('default');
 
+container.on('error', function() {});
+
 process.on("SIGHUP", function() {
     container.reopenAllHandlers();
 });

@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
-var logger = require('../index');
+var dlog = require('../index');
 
-var Format = logger.Format,
-    ConsoleHandler = logger.ConsoleHandler,
-    ExceptionReporter = logger.ExceptionReporter;
+var Format = dlog.Format,
+    ConsoleHandler = dlog.ConsoleHandler,
+    ExceptionReporter = dlog.ExceptionReporter;
 
 var formatter = Format.compile('[:date] [:name] [:level] :stack');
+var logger = dlog.getLogger();
 logger.addHandler(new ConsoleHandler(formatter));
 
 var reporter = new ExceptionReporter(logger);

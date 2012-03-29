@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 
-var logger = require('../index');
+var dlog = require('../index');
 
-var Format = logger.Format,
-    FileHandler = logger.FileHandler,
-    ConsoleHandler = logger.ConsoleHandler,
-    ExceptionReporter = logger.ExceptionReporter;
+var Format = dlog.Format,
+    FileHandler = dlog.FileHandler,
+    ConsoleHandler = dlog.ConsoleHandler,
+    ExceptionReporter = dlog.ExceptionReporter;
 
 var formatter = Format.compile('[:date] [:name] [:level] :message');
+var logger = dlog.getLogger();
+
 logger.addHandler(new FileHandler(formatter, 'test.log'));
-logger.addHandler(new ConsoleHandler(formatter));
 
 logger.shout('shout');
 logger.severe('severe');

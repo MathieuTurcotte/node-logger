@@ -99,6 +99,19 @@ exports["Logger"] = testCase({
         test.done();
     },
 
+    "flush should call flush on all handlers": function(test) {
+        this.handler0Mock.expects('flush').once();
+        this.handler1Mock.expects('flush').once();
+        this.handler2Mock.expects('flush').once();
+
+        this.logger.flush();
+
+        this.handler0Mock.verify();
+        this.handler1Mock.verify();
+        this.handler2Mock.verify();
+        test.done();
+    },
+
     "logger should listen for error events on handlers": function(test) {
         var handler = new Handler(),
             logger = new Logger('logger');

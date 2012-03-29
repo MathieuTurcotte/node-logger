@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-var logger = require('../../index'),
+var dlog = require('../../index'),
     fs = require('fs');
 
-var Format = logger.Format,
-    FileHandler = logger.FileHandler,
-    ExceptionReporter = logger.ExceptionReporter;
+var Format = dlog.Format,
+    FileHandler = dlog.FileHandler,
+    ExceptionReporter = dlog.ExceptionReporter;
 
 fs.writeFileSync('loop.pid', process.pid);
 
@@ -22,6 +22,7 @@ process.on('SIGINT', function() {
     process.exit(0);
 });
 
+var logger = dlog.getLogger();
 var format = Format.compile('[:date] [:name] [:level] :message');
 logger.addHandler(new FileHandler(format, 'test.log'));
 
