@@ -19,6 +19,16 @@ var container = module.exports = new Container('default');
 
 container.on('error', function() {});
 
+container.flushAndExit = function(timeout) {
+    container.once('flushed', function() {
+        process.exit(0);
+    });
+    container.once('timeout', function() {
+        process.exit(0);
+    });
+    container.flush(timeout);
+};
+
 process.on("SIGHUP", function() {
     container.reopenAllHandlers();
 });

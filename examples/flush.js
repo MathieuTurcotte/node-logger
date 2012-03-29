@@ -28,13 +28,7 @@ for (var i = 0; i < 10; i++) {
     loggerC.info('info ' + i);
 }
 
-dlog.once('flushed', function() {
-    process.exit(0);
-});
-dlog.once('timeout', function() {
-    process.exit(1);
-});
-dlog.flush(1000 /* ms */);
+dlog.flushAndExit(1000);
 
 /*
  * Try this to see what happens when process.exit(0)
