@@ -13,28 +13,23 @@ var testCase = require('nodeunit').testCase,
 var Level = require('../lib/level');
 
 exports["Level"] = testCase({
-    "levels with identical value should not eval above each other": function(test) {
-        var level0 = new Level('level0', 10),
-            level1 = new Level('level1', 10);
+    "isAboveOrEqual should perform à <= comparison between level's value": function(test) {
+        var level0 = new Level('level0', 0),
+            level1 = new Level('level1', 10),
+            level2 = new Level('level2', 10),
+            level3 = new Level('level3', 20);
 
-        test.ok(level0.isAbove(level1) == false);
-        test.ok(level1.isAbove(level0) == false);
-        test.done();
-    },
+        // Levels with same value.
+        test.equal(level0.isAboveOrEqual(level0), true);
+        test.equal(level1.isAboveOrEqual(level2), true);
+        test.equal(level2.isAboveOrEqual(level1), true);
 
-    "level with smaller value should eval under level with greater value": function(test) {
-        var small = new Level('small', 10),
-            big = new Level('big', 20);
+        // Level with smaller value.
+        test.equal(level1.isAboveOrEqual(level0), true);
 
-        test.ok(small.isAbove(big) == false);
-        test.done();
-    },
+        // Level with smaller value.
+        test.equal(level2.isAboveOrEqual(level3), false);
 
-    "level with greater value should eval above level with smaller value": function(test) {
-        var small = new Level('small', 10),
-            big = new Level('big', 20);
-
-        test.ok(big.isAbove(small));
         test.done();
     }
 });

@@ -64,7 +64,7 @@ exports["Logger"] = testCase({
         this.handler1Mock.expects('publish').never();
         this.handler2Mock.expects('publish').once();
 
-        this.child1.setLevel(Level.INFO);
+        this.child1.setLevel(Level.WARNING);
         this.child2.log(Level.INFO, 'message');
 
         this.handler0Mock.verify();
