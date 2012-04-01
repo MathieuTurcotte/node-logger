@@ -36,11 +36,23 @@ exports["Logger"] = testCase({
         callback();
     },
 
-    "shout method should log at Level.SHOUT": function(test) {
-        this.logger.shout('message', this.exception);
+    "fatal method should log at Level.FATAL": function(test) {
+        this.logger.fatal('message', this.exception);
 
         test.hasAttributes(publishedRecord(this.handler), {
-            level: Level.SHOUT,
+            level: Level.FATAL,
+            message: 'message',
+            loggerName: 'foo.bar.biz',
+            exception: this.exception
+        });
+        test.done();
+    },
+
+    "error method should log at Level.ERROR": function(test) {
+        this.logger.error('message', this.exception);
+
+        test.hasAttributes(publishedRecord(this.handler), {
+            level: Level.ERROR,
             message: 'message',
             loggerName: 'foo.bar.biz',
             exception: this.exception
@@ -72,6 +84,18 @@ exports["Logger"] = testCase({
         test.done();
     },
 
+    "notice method should log at Level.NOTICE": function(test) {
+        this.logger.notice('message', this.exception);
+
+        test.hasAttributes(publishedRecord(this.handler), {
+            level: Level.NOTICE,
+            message: 'message',
+            loggerName: 'foo.bar.biz',
+            exception: this.exception
+        });
+        test.done();
+    },
+
     "info method should log at Level.INFO": function(test) {
         this.logger.info('message', this.exception);
 
@@ -96,35 +120,11 @@ exports["Logger"] = testCase({
         test.done();
     },
 
-    "fine method should log at Level.FINE": function(test) {
-        this.logger.fine('message', this.exception);
+    "debug method should log at Level.DEBUG": function(test) {
+        this.logger.debug('message', this.exception);
 
         test.hasAttributes(publishedRecord(this.handler), {
-            level: Level.FINE,
-            message: 'message',
-            loggerName: 'foo.bar.biz',
-            exception: this.exception
-        });
-        test.done();
-    },
-
-    "finer method should log at Level.FINER": function(test) {
-        this.logger.finer('message', this.exception);
-
-        test.hasAttributes(publishedRecord(this.handler), {
-            level: Level.FINER,
-            message: 'message',
-            loggerName: 'foo.bar.biz',
-            exception: this.exception
-        });
-        test.done();
-    },
-
-    "finest method should log at Level.FINEST": function(test) {
-        this.logger.finest('message', this.exception);
-
-        test.hasAttributes(publishedRecord(this.handler), {
-            level: Level.FINEST,
+            level: Level.DEBUG,
             message: 'message',
             loggerName: 'foo.bar.biz',
             exception: this.exception

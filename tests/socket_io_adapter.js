@@ -14,10 +14,10 @@ var SocketIOAdapter = require('../lib/adapter/socket_io'),
     Logger = require('../lib/logger');
 
 var LEVELS = {
-    error: Level.SHOUT,
+    error: Level.ERROR,
     warn: Level.WARNING,
     info: Level.INFO,
-    debug: Level.FINEST
+    debug: Level.DEBUG
 };
 
 var MESSAGES = {
@@ -49,7 +49,7 @@ exports["SocketIOAdapter"] = testCase({
         callback();
     },
 
-    "Adapter.error should log at Level.SHOUT": function(test) {
+    "Adapter.error should log at Level.ERROR": function(test) {
         doTest(test, this.adapter, this.expectation, 'error');
     },
 
@@ -61,7 +61,7 @@ exports["SocketIOAdapter"] = testCase({
         doTest(test, this.adapter, this.expectation, 'info');
     },
 
-    "Adapter.debug should log at Level.FINEST": function(test) {
+    "Adapter.debug should log at Level.DEBUG": function(test) {
         doTest(test, this.adapter, this.expectation, 'debug');
     },
 });

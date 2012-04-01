@@ -12,12 +12,12 @@ var logger = dlog.getLogger();
 
 logger.addHandler(new FileHandler(formatter, 'test.log'));
 
-logger.shout('shout');
+logger.fatal('fatal');
+logger.error('error');
 logger.severe('severe');
 logger.warning('warning');
+logger.notice('notice');
 logger.info('info');
 logger.config('config');
-logger.fine('fine');
-logger.finer('finer');
-logger.finest('finest');
+logger.debug('debug');
 
