@@ -37,97 +37,89 @@ exports["Logger"] = testCase({
     },
 
     "fatal method should log at Level.FATAL": function(test) {
-        this.logger.fatal('message', this.exception);
+        this.logger.fatal('message');
 
         test.hasAttributes(publishedRecord(this.handler), {
             level: Level.FATAL,
             message: 'message',
             loggerName: 'foo.bar.biz',
-            exception: this.exception
         });
         test.done();
     },
 
     "error method should log at Level.ERROR": function(test) {
-        this.logger.error('message', this.exception);
+        this.logger.error('message');
 
         test.hasAttributes(publishedRecord(this.handler), {
             level: Level.ERROR,
             message: 'message',
             loggerName: 'foo.bar.biz',
-            exception: this.exception
         });
         test.done();
     },
 
     "severe method should log at Level.SEVERE": function(test) {
-        this.logger.severe('message', this.exception);
+        this.logger.severe('message');
 
         test.hasAttributes(publishedRecord(this.handler), {
             level: Level.SEVERE,
             message: 'message',
             loggerName: 'foo.bar.biz',
-            exception: this.exception
         });
         test.done();
     },
 
     "warning method should log at Level.WARNING": function(test) {
-        this.logger.warning('message', this.exception);
+        this.logger.warning('message');
 
         test.hasAttributes(publishedRecord(this.handler), {
             level: Level.WARNING,
             message: 'message',
             loggerName: 'foo.bar.biz',
-            exception: this.exception
         });
         test.done();
     },
 
     "notice method should log at Level.NOTICE": function(test) {
-        this.logger.notice('message', this.exception);
+        this.logger.notice('message');
 
         test.hasAttributes(publishedRecord(this.handler), {
             level: Level.NOTICE,
             message: 'message',
             loggerName: 'foo.bar.biz',
-            exception: this.exception
         });
         test.done();
     },
 
     "info method should log at Level.INFO": function(test) {
-        this.logger.info('message', this.exception);
+        this.logger.info('message');
 
         test.hasAttributes(publishedRecord(this.handler), {
             level: Level.INFO,
             message: 'message',
             loggerName: 'foo.bar.biz',
-            exception: this.exception
         });
         test.done();
     },
 
     "config method should log at Level.CONFIG": function(test) {
-        this.logger.config('message', this.exception);
+        this.logger.config('message');
 
         test.hasAttributes(publishedRecord(this.handler), {
             level: Level.CONFIG,
             message: 'message',
             loggerName: 'foo.bar.biz',
-            exception: this.exception
         });
         test.done();
     },
 
     "debug method should log at Level.DEBUG": function(test) {
-        this.logger.debug('message', this.exception);
+        this.logger.debug('message');
 
         test.hasAttributes(publishedRecord(this.handler), {
             level: Level.DEBUG,
             message: 'message',
             loggerName: 'foo.bar.biz',
-            exception: this.exception
         });
         test.done();
     }
