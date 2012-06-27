@@ -3,19 +3,14 @@
  * Licensed under the MIT license.
  */
 
-var events = require('events'),
-    util = require('util');
-
-var testCase = require('nodeunit').testCase,
-    assert = require('nodeunit').assert,
-    sinon = require('sinon');
+var sinon = require('sinon');
 
 var Level = require('../lib/level'),
     Record = require('../lib/record');
 
 var NOW = 123456;
 
-exports["Record"] = testCase({
+exports["Record"] = {
     setUp: function(callback) {
         this.clock = sinon.useFakeTimers(NOW);
         callback();
@@ -57,4 +52,4 @@ exports["Record"] = testCase({
         test.ok(isLoggable);
         test.done();
     }
-});
+};

@@ -4,16 +4,12 @@
  */
 
 var events = require('events'),
-    utils = require('util');
-
-var testCase = require('nodeunit').testCase,
-    assert = require('nodeunit').assert,
     sinon = require('sinon');
 
 var Container = require('../lib/container'),
     Logger = require('../lib/logger');
 
-exports["Container"] = testCase({
+exports["Container"] = {
     setUp: function(callback) {
         this.container = new Container();
 
@@ -131,4 +127,4 @@ exports["Container"] = testCase({
 
         test.done();
     }
-});
+};

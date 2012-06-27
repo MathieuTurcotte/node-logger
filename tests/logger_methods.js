@@ -3,12 +3,7 @@
  * Licensed under the MIT license.
  */
 
-var events = require('events'),
-    util = require('util');
-
-var testCase = require('nodeunit').testCase,
-    assert = require('nodeunit').assert,
-    sinon = require('sinon');
+var sinon = require('sinon');
 
 var Level = require('../lib/level'),
     Logger = require('../lib/logger'),
@@ -22,7 +17,7 @@ function publishedRecord(handler) {
 var LOGGER_NAME = 'foo.bar.biz',
     DATE_NOW = 1234567;
 
-exports["Logger"] = testCase({
+exports["Logger"] = {
     setUp: function(callback) {
         this.clock = sinon.useFakeTimers(DATE_NOW);
         this.handler = sinon.stub(new Handler());
@@ -179,4 +174,4 @@ exports["Logger"] = testCase({
         test.equals(record.time, DATE_NOW);
         test.done();
     }
-});
+};

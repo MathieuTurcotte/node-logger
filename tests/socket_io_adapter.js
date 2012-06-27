@@ -3,12 +3,7 @@
  * Licensed under the MIT license.
  */
 
-var events = require('events'),
-    utils = require('util');
-
-var testCase = require('nodeunit').testCase,
-    assert = require('nodeunit').assert,
-    sinon = require('sinon');
+var sinon = require('sinon');
 
 var SocketIOAdapter = require('../lib/adapter/socket_io'),
     Logger = require('../lib/logger');
@@ -38,7 +33,7 @@ function doTest(test, adapter, expectation, name) {
     test.done();
 }
 
-exports["SocketIOAdapter"] = testCase({
+exports["SocketIOAdapter"] = {
     setUp: function(callback) {
         this.logger = new Logger();
         this.loggerMock = sinon.mock(this.logger);
@@ -64,4 +59,4 @@ exports["SocketIOAdapter"] = testCase({
     "Adapter.debug should log at Level.DEBUG": function(test) {
         doTest(test, this.adapter, this.expectation, 'debug');
     },
-});
+};

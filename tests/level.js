@@ -3,16 +3,9 @@
  * Licensed under the MIT license.
  */
 
-var events = require('events'),
-    utils = require('util');
-
-var testCase = require('nodeunit').testCase,
-    assert = require('nodeunit').assert,
-    sinon = require('sinon');
-
 var Level = require('../lib/level');
 
-exports["Level"] = testCase({
+exports["Level"] = {
     "isAboveOrEqual should perform à <= comparison between level's value": function(test) {
         var level0 = new Level('level0', 0),
             level1 = new Level('level1', 10),
@@ -32,4 +25,4 @@ exports["Level"] = testCase({
 
         test.done();
     }
-});
+};

@@ -3,14 +3,9 @@
  * Licensed under the MIT license.
  */
 
-var events = require('events'),
-    util = require('util'),
+var sinon = require('sinon'),
     path = require('path'),
     fs = require('fs');
-
-var testCase = require('nodeunit').testCase,
-    assert = require('nodeunit').assert,
-    sinon = require('sinon');
 
 var Record = require('../lib/record'),
     FileHandler = require('../lib/handler/file');
@@ -39,7 +34,7 @@ function rmdirSync(p) {
 
 var LOG_FOLDER = path.join(__dirname, 'log');
 
-exports["FileHandler"] = testCase({
+exports["FileHandler"] = {
     setUp: function(callback) {
         rmdirSync(LOG_FOLDER);
         fs.mkdirSync(LOG_FOLDER);
@@ -118,4 +113,4 @@ exports["FileHandler"] = testCase({
 
         this.handler.flush();
     }
-});
+};

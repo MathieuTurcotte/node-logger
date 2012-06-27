@@ -3,19 +3,14 @@
  * Licensed under the MIT license.
  */
 
-var events = require('events'),
-    utils = require('util');
-
-var testCase = require('nodeunit').testCase,
-    assert = require('nodeunit').assert,
-    sinon = require('sinon');
+var sinon = require('sinon');
 
 var MemoryReporter = require('../lib/reporter/memory'),
     Logger = require('../lib/logger');
 
 var INTERVAL_DURATION = 100;
 
-exports["MemoryReporter"] = testCase({
+exports["MemoryReporter"] = {
     setUp: function(callback) {
         this.clock = sinon.useFakeTimers();
 
@@ -71,4 +66,4 @@ exports["MemoryReporter"] = testCase({
         expectation.verify();
         test.done();
     }
-});
+};

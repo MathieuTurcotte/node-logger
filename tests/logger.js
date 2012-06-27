@@ -4,10 +4,6 @@
  */
 
 var events = require('events'),
-    util = require('util');
-
-var testCase = require('nodeunit').testCase,
-    assert = require('nodeunit').assert,
     sinon = require('sinon');
 
 var Level = require('../lib/level'),
@@ -15,7 +11,7 @@ var Level = require('../lib/level'),
     Record = require('../lib/record'),
     Handler = require('../lib/handler/handler');
 
-exports["Logger"] = testCase({
+exports["Logger"] = {
     setUp: function(callback) {
         // Some handlers. Shared between the single
         // logger and the logger hierarchy.
@@ -137,4 +133,4 @@ exports["Logger"] = testCase({
         mock.verify();
         test.done();
     }
-});
+};

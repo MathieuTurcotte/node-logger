@@ -3,17 +3,12 @@
  * Licensed under the MIT license.
  */
 
-var events = require('events'),
-    utils = require('util');
-
-var testCase = require('nodeunit').testCase,
-    assert = require('nodeunit').assert,
-    sinon = require('sinon');
+var sinon = require('sinon');
 
 var ExceptionReporter = require('../lib/reporter/exception'),
     Logger = require('../lib/logger');
 
-exports["ExceptionReporter"] = testCase({
+exports["ExceptionReporter"] = {
     setUp: function(callback) {
         this.logger = new Logger();
         this.loggerMock = sinon.mock(this.logger);
@@ -54,4 +49,4 @@ exports["ExceptionReporter"] = testCase({
         test.equal(loggedException, exception);
         test.done();
     }
-});
+};
